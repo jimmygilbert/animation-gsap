@@ -1,0 +1,59 @@
+---
+description: Règles pour le projet de démos GSAP (structure CSS et animations)
+alwaysApply: true
+---
+
+# Règles du projet « animation-gsap »
+
+## 1. Organisation du CSS
+
+- **Jamais de CSS dans le HTML**
+  - Ne pas utiliser de balise `<style>` dans les fichiers `.html`.
+  - Ne pas utiliser de styles inline (`style="..."`) dans le HTML.
+  - Toute nouvelle règle de style doit aller dans `css/styles.css` (ou un autre fichier `.css` dédié si le projet grossit, mais toujours dans le dossier `css/`).
+
+- **Dossier CSS obligatoire**
+  - Les feuilles de style doivent être placées dans un dossier `css/` à la racine du projet.
+  - Les pages HTML doivent référencer ces fichiers via des chemins relatifs, par exemple :
+
+    ```html
+    <link rel="stylesheet" href="css/styles.css" />
+    ```
+
+- **Spécificité par page**
+  - Si une page a des styles spécifiques, utiliser une classe de contexte sur le `body` (par exemple `class="svg-page"`) et écrire les règles correspondantes dans le CSS global :
+
+    ```css
+    .svg-page .wrapper-page { /* ... */ }
+    ```
+
+  - Ne jamais recréer une deuxième feuille dans le HTML.
+
+## 2. Nature des animations
+
+- **Projet centré sur GSAP**
+  - Ce projet est un projet de démonstrations **GSAP**.
+  - Les animations de contenu, de cartes, d’éléments d’interface, etc. doivent utiliser **GSAP** (timelines, tweens, plugins) et non des animations CSS, sauf cas très particulier explicitement demandé.
+
+- **Éviter les animations 100 % CSS**
+  - Pour des transitions d’entrée, survols, scroll, séquences de présentation, préférer :
+
+    ```ts
+    gsap.fromTo(...);
+    gsap.timeline(...);
+    gsap.to(...);
+    ```
+
+  - Les `@keyframes` CSS doivent rester l’exception, uniquement pour de petits effets décoratifs qui ne sont pas le cœur de la démo.
+
+- **Utilisation explicite de GSAP**
+  - Lorsque l’utilisateur demande « une animation » pour ce projet, interpréter par défaut : **animation GSAP**.
+  - Toujours vérifier que les animations ajoutées utilisent bien la librairie `gsap` chargée dans le projet (et ses plugins comme `ScrollTrigger` si pertinent).
+
+## 3. Structure TypeScript
+
+- **Une entrée TS par page principale**
+  - La page d’accueil est animée via `src/home.ts` → `dist/home.js`.
+  - La page de présentation SVG est animée (si besoin) via `src/svg-presentation.ts` → `dist/svg-presentation.js`.
+  - Chaque nouvelle page de démo devrait idéalement avoir son propre fichier TS dédié dans `src/`, compilé vers `dist/`, et référencé explicitement dans la page HTML.
+

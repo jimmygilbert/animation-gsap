@@ -1,0 +1,22 @@
+{
+  "name": "animation-gsap",
+  "version": "1.0.0",
+  "description": "Projet GSAP (GreenSock) avec animation d'interface.",
+  "private": true,
+  "scripts": {
+    "build": "tsc && node scripts/build-dist.js",
+    "dev": "npm run build && concurrently \"tsc --watch\" \"onchange index.html svg-presentation.html 'css/**' -- node scripts/build-dist.js\" \"http-server dist -c-1 -o\"",
+    "preview": "http-server dist -c-1 -o",
+    "start": "npm run dev",
+    "open": "start dist/index.html"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "concurrently": "^9.0.0",
+    "http-server": "^14.1.1",
+    "onchange": "^7.1.0"
+  }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Demo GSAP – Animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <!-- JS généré depuis TypeScript pour la page d’accueil -->
+  <script src="dist/home.js" defer></script>
+</head>
+
+<body>
+  <nav class="main-nav main-nav-page">
+    <a href="index.html" class="nav-link nav-link-active">Accueil GSAP</a>
+    <a href="svg-presentation.html" class="nav-link">Exemple SVG présentation</a>
+  </nav>
+  <main class="app">
+    <header class="app-header">
+      <h1 class="title">
+        <span class="title-word">GSAP</span>
+        <span class="title-word">Demo</span>
+      </h1>
+      <p class="subtitle">Petite scène animée avec GSAP 3.</p>
+      <button class="btn-replay" id="btn-replay">Rejouer l'animation</button>
+    </header>
+
+    <section class="cards">
+      <article class="card card-1">
+        <h2>Carte 1</h2>
+        <p>Apparition en fondu + translation.</p>
+      </article>
+      <article class="card card-2">
+        <h2>Carte 2</h2>
+        <p>Décalage en X avec easing élastique.</p>
+      </article>
+      <article class="card card-3">
+        <h2>Carte 3</h2>
+        <p>Rotation et effet de survol.</p>
+      </article>
+    </section>
+
+    <section class="scroll-section">
+      <h2>ScrollTrigger</h2>
+      <p>
+        En faisant défiler, ce bloc réagit grâce à <code>ScrollTrigger</code>.
+      </p>
+      <div class="scroll-box"></div>
+    </section>
+  </main>
+</body>
+
+</html>
